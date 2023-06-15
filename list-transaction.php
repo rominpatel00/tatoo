@@ -61,10 +61,10 @@
                                         <th>Custo- mization</th>
                                         <th>Custom Design</th>
                                         <th>Laser</th>
+                                        <th>Total</th>
                                         <!-- <th>Payment Type</th> -->
                                         <th>Cash</th>
                                         <th>Online</th>
-                                        <th>Total</th>
                                         <th>Edit</th>
                                         <th>Remove</th>
                                     </tr>
@@ -113,10 +113,10 @@
                                 <td><?php echo $row['has_custom_design'] == 0 ?  'No' :  'Yes'; ?></td>
                                 <td><?php echo $row['has_laser'] == 0 ?  'No' : 'Yes' ?></td>
                                
+                                <td><?php echo $row['total']?></td>
                                 <!-- <td><?php // echo $row['payment_type']?></td> -->
                                 <td><?php echo $row['cash_payment']?></td>
                                 <td><?php echo $row['online_payment']?></td>
-                                <td><?php echo $row['total']?></td>
                                 <td>
                                     <a href="frm-transaction-update.php?id=<?php echo $row['id'];?>"><button class='btn btn-primary'><i class='fa fa-edit'></i></button></a></td>
                                 <td>

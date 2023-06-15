@@ -18,16 +18,20 @@
 
 if(isset($_POST['submit'])){
     include "config.php";
-   
-    $customer_id = isset($_POST['customer_id']) ? $_POST['customer_id'] : '0';
+
+    $fname = isset($_POST['fname']) ? $_POST['fname'] : 'fname';
+    $mname = isset($_POST['mname']) ? $_POST['mname'] : 'mname';
+    $lname = isset($_POST['lname']) ? $_POST['lname'] : 'lname';
+    $contact = isset($_POST['contact']) ? $_POST['contact'] : 'contact';
+    $email = isset($_POST['email']) ? $_POST['email'] : 'email';
     $artist_id = isset($_POST['artist_id']) ? $_POST['artist_id'] : '0';
     $appointment_date = isset($_POST['appointment_date']) ? $_POST['appointment_date'] : '0';
     $cash_payment = isset($_POST['cash_payment']) ? $_POST['cash_payment'] : '0';
     $online_payment = isset($_POST['online_payment']) ? $_POST['online_payment'] : '0';
     $status = isset($_POST['status']) ? $_POST['status'] : '0';
 
-    $sql = "INSERT INTO `advance_appointment` ( `customer_id`,`artist_id`, `appointment_date`, `cash_payment`, `online_payment`, `status`) 
-    VALUES ('".$customer_id."','".$artist_id."','".$appointment_date."','".$cash_payment."','".$online_payment."','".$status."') "; 
+    $sql = "INSERT INTO `advance_appointment` ( `fname`,`mname`,`lname`,`contact`,`email`,`artist_id`, `appointment_date`, `cash_payment`, `online_payment`, `status`) 
+    VALUES ('".$fname."','".$mname."','".$lname."','".$contact."','".$email."','".$artist_id."','".$appointment_date."','".$cash_payment."','".$online_payment."','".$status."') "; 
 
     $result = mysqli_query($conn, $sql) or die("Query Failed". mysqli_error());
     ?>
@@ -83,23 +87,41 @@ if(isset($_POST['submit'])){
                 <!-- mentor DETAILS -->
                 <div class="card-body">
                     <div class="row">
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="fname"  class="form-control select2" style="width: 100%;">
+                                </input>
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Client Name</label>
-                                <select class="form-control" name="customer_id">
-                                <?php
-                                   
-                                    $sql= "SELECT * FROM customer ORDER BY id DESC";
-                                    $result =mysqli_query($conn,$sql) or die("query failed". mysqli_error());
-                                    if($row = mysqli_num_rows($result)>0){
-                                        while($row = mysqli_fetch_assoc($result)){
-                                            ?>
-                                             <option value="<?php echo $row['id']?>"><?php echo $row['fname']?> <?php echo $row['lname']?></option>
-                                            <?php
-                                        }
-                                    } 
-                                ?>
-                                </select>
+                                <label>Middle Name</label>
+                                <input type="text"  name="mname" class="form-control select2" style="width: 100%;">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text"  name="lname" class="form-control select2" style="width: 100%;">
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Contact No.</label>
+                                <input type="tel" name="contact" class="form-control select2" style="width: 100%;">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>E Mail</label>
+                                <input type="email" name="email" class="form-control select2" style="width: 100%;">
+                                </input>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -121,6 +143,10 @@ if(isset($_POST['submit'])){
                                     </select>
                                 </div>
                         </div>
+                        
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Appointment Date</label>
@@ -128,9 +154,6 @@ if(isset($_POST['submit'])){
                                 </input>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Cash Payment</label>
@@ -145,8 +168,10 @@ if(isset($_POST['submit'])){
                                 </input>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4">
-                        <label>Appointment Status</label>
+                            <label>Appointment Status</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="Pending" >Pending</option>
                                 <option value="Completed" >Completed</option>
@@ -154,7 +179,7 @@ if(isset($_POST['submit'])){
                             </select>
                         </div>
                     </div>
-                
+                            
 
                     <div class="d-flex justify-content-center"><input type="submit"name="submit" value="submit" class="btn btn-secondary"></input></div>
 

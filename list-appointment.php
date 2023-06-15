@@ -68,7 +68,7 @@
                                 <?php
                                 include "config.php";
                                 $id = 0;
-                                $sql= "SELECT advance_appointment.*, customer.fname, customer.lname,customer.mname,artist.fname as aFname, artist.lname as aLname,artist.mname as aMname, customer.email,customer.contact,customer.address from advance_appointment JOIN customer on customer.id = advance_appointment.customer_id JOIN artist on artist.id = advance_appointment.artist_id ORDER BY advance_appointment.id DESC;";
+                                $sql= "SELECT advance_appointment.*,artist.fname as aFname, artist.lname as aLname,artist.mname as aMname from advance_appointment JOIN artist on artist.id = advance_appointment.artist_id ORDER BY advance_appointment.id DESC;";
                                 $result =mysqli_query($conn,$sql) or die("query failed". mysqli_error());
                                 if($row = mysqli_num_rows($result)>0){
                                     while($row = mysqli_fetch_assoc($result)){

@@ -101,21 +101,21 @@ if(isset($_POST['submit'])){
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>First Name</label>
-                                <input type="text" name="fname" value="<?php echo $row['fname'];?>" class="form-control select2" style="width: 100%;">
+                                <input type="text" name="fname" value="<?php echo $row2['fname'];?>" class="form-control select2" style="width: 100%;">
                                 </input>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Middle Name</label>
-                                <input type="text"  name="mname" value="<?php echo $row['mname'];?>" class="form-control select2" style="width: 100%;">
+                                <input type="text"  name="mname" value="<?php echo $row2['mname'];?>" class="form-control select2" style="width: 100%;">
                                 </input>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Last Name</label>
-                                <input type="text"  name="lname" value="<?php echo $row['lname'];?>" class="form-control select2" style="width: 100%;">
+                                <input type="text"  name="lname" value="<?php echo $row2['lname'];?>" class="form-control select2" style="width: 100%;">
                                 </input>
                             </div>
                         </div>
@@ -125,14 +125,14 @@ if(isset($_POST['submit'])){
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Contact No.</label>
-                                <input type="tel" name="contact" value="<?php echo $row['contact'];?>" class="form-control select2" style="width: 100%;">
+                                <input type="tel" name="contact" value="<?php echo $row2['contact'];?>" class="form-control select2" style="width: 100%;">
                                 </input>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>E Mail</label>
-                                <input type="email" name="email" value="<?php echo $row['email'];?>" class="form-control select2" style="width: 100%;">
+                                <input type="email" name="email" value="<?php echo $row2['email'];?>" class="form-control select2" style="width: 100%;">
                                 </input>
                             </div>
                         </div>

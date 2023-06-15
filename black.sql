@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2023 at 07:02 PM
+-- Generation Time: Jun 15, 2023 at 07:00 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -29,7 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `advance_appointment` (
   `id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `mname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `email` varchar(2255) NOT NULL,
   `artist_id` int(11) NOT NULL,
   `appointment_date` datetime NOT NULL,
   `cash_payment` int(11) NOT NULL,
@@ -41,15 +45,14 @@ CREATE TABLE `advance_appointment` (
 -- Dumping data for table `advance_appointment`
 --
 
-INSERT INTO `advance_appointment` (`id`, `customer_id`, `artist_id`, `appointment_date`, `cash_payment`, `online_payment`, `status`) VALUES
-(4, 80, 0, '2023-06-15 23:48:00', 500, 0, ''),
-(5, 78, 0, '2023-06-16 01:48:00', 499, 0, ''),
-(6, 69, 0, '2023-06-18 23:48:00', 500, 0, ''),
-(7, 80, 0, '2023-06-20 14:00:00', 1000, 0, ''),
-(8, 81, 0, '2023-06-18 02:40:00', 499, 0, 'Pending'),
-(9, 81, 0, '2023-06-30 00:40:00', 500, 100, 'Pending'),
-(10, 81, 15, '2023-06-30 00:40:00', 500, 100, 'Pending'),
-(11, 79, 11, '2023-06-11 02:50:00', 500, 800, 'Completed');
+INSERT INTO `advance_appointment` (`id`, `fname`, `mname`, `lname`, `contact`, `email`, `artist_id`, `appointment_date`, `cash_payment`, `online_payment`, `status`) VALUES
+(4, '', '', '', '', '', 0, '2023-06-15 23:48:00', 500, 0, ''),
+(5, '', '', '', '', '', 0, '2023-06-16 01:48:00', 499, 0, ''),
+(6, '', '', '', '', '', 0, '2023-06-18 23:48:00', 500, 0, ''),
+(7, '', '', '', '', '', 0, '2023-06-20 14:00:00', 1000, 0, ''),
+(8, '', '', '', '', '', 0, '2023-06-18 02:40:00', 499, 0, 'Pending'),
+(9, '', '', '', '', '', 0, '2023-06-30 00:40:00', 500, 100, 'Pending'),
+(12, 'Romin ji', 'D i', 'Virani ji', '82000741500', 'rominvirani.86574@gmail.com', 15, '2023-06-16 02:10:00', 505, 498, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -648,7 +651,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `advance_appointment`
 --
 ALTER TABLE `advance_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `artist`

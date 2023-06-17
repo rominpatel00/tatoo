@@ -76,13 +76,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Select Month</label>
-                                <input type="month" value="<?php echo $_POST['month'];?>" class="form-control" name="month" >
+                                <input type="month" value="" class="form-control" name="month" >
                             </div>
                         </div> 
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Number of Leaves</label>
-                                <input type="number" value="<?php echo $_POST['leave'];?>" class="form-control" name="leave" >
+                                <input type="number" value="" class="form-control" name="leave" >
                             </div>
                         </div>
                         <div class="col-md-3 " style="    padding-top: 30px;">
@@ -153,7 +153,8 @@
                                              transaction.has_customization, transaction.has_custom_design, transaction.has_laser, 
                                              product.product_name, 
                                              CONCAT_WS(' ', customer.fname, customer.lname ) AS `customer_name` , 
-                                             CONCAT_WS(' ', artist.fname, artist.lname ) AS `artist_name`
+                                             CONCAT_WS(' ', artist.fname, artist.lname ) AS `artist_name`, 
+                                             artist.salary AS `artist_salary`
                                                     
                                              FROM transaction, customer, artist, product
                                              WHERE transaction.client_id = customer.id 
@@ -163,10 +164,12 @@
                                              AND transaction.date_month = '". $month. "'
                                              ORDER BY 1,2";      
 
+                                            $artist_sal =0;
                                             $result =mysqli_query($conn,$sql) or die("query failed". mysqli_error());
                                             if($row = mysqli_num_rows($result)>0){
                                                 while($row = mysqli_fetch_assoc($result)){
-                                                    $totalSale = $totalSale + $row['total'];
+                                                    $totalSale = $totalSale + $row['total'] ;
+                                                    $artist_sal = $row['artist_salary'];
                                                    if($row['has_customization']) {
                                                     $totalCustomisation =  $totalCustomisation + $row['charge_custom'];
                                                    }
@@ -312,7 +315,7 @@
 
                                              $totalSalaryToGiven =  $totalSalaryCommission +  $totalSalaryIncentive + 
                                              $totalSalaryCustomization + $totalSalaryCustom_design + $totalSalaryLaser + 
-                                             $totalSalaryPiercing ;
+                                             $totalSalaryPiercing + $artist_sal ;
                                    
                                              if($leave > $no_of_leaves ){
                                                 $totalSalaryToGivenAfterLeave  = $totalSalaryToGiven - $leave_deduaction;
@@ -359,7 +362,7 @@
                                             <td><?php echo $totalSalaryCustom_design ?></td>
                                             <td><?php echo $totalSalaryLaser ?></td>
                                             <td><?php echo $totalSalaryPiercing ?></td>
-                                            <td></td>
+                                            <td> </td>
                                             <td><?php echo $totalSalaryToGiven ?></td>
                                     </tr> 
                                     <tr>
